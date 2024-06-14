@@ -3,6 +3,7 @@ import bodyParser from "body-parser"
 import cors from "cors"
 import dotenv from "dotenv"
 import { banks, beneficiary, branches, init_payment, transaction_fee, transfer, transfer_fee, verify_payment } from "./controllers/flutterwave/payment.js"
+import { v4 } from "uuid"
 
 dotenv.config()
 
@@ -29,10 +30,10 @@ app.get("/branches/:id", async (req, res) => {
 
 app.post("/init", async (req, res) => {
     const params = {
-        tx_ref : req.body.ref,
+        tx_ref : v4(),
         currency : req.body.currency,
         amount : req.body.amount,
-        redirect_url : "https://t.me/P2P_Bet_Dev_bot",
+        redirect_url : "",
         customer : {
             email : req.body.email
         }
