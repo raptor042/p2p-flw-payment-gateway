@@ -33,7 +33,7 @@ app.post("/init", async (req, res) => {
         tx_ref : v4(),
         currency : req.body.currency,
         amount : req.body.amount,
-        redirect_url : "",
+        redirect_url : req.body.redirect_url,
         customer : {
             email : req.body.email
         }
